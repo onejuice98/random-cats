@@ -1,9 +1,8 @@
-import Cat from './Cats';
+import Router from './routes/Router';
+
 function App() {
   return (
-    <div>
-      <Cat />
-    </div>
+    <Router />
   );
 }
 
