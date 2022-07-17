@@ -1,6 +1,7 @@
 import { useQuery } from "react-query";
 import { fetchBreeds, fetchCats } from "../api";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
     padding : 0px 20px;
@@ -16,13 +17,12 @@ const Header = styled.header`
     font-size : 48px;
 `;
 
-const CatImg = styled.img`
+export const CatImg = styled.img`
     width : 400px;
     height : 400px;
 `;
 
-
-interface ICat {
+export interface ICat {
     breeds : [];
     id : string;
     url : string;
@@ -102,7 +102,11 @@ function Cat(){
                         </div>
                     ))}
                     {breedData?.map((breed) => (
-                        <h3> {breed.name} </h3>
+                        <>
+                            <Link to={`/${breed.id}`}>
+                                <h3> {breed.name} </h3>
+                            </Link>
+                        </>
                     ))}
 
                 </Container>
