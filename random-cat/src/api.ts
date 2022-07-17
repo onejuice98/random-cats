@@ -10,5 +10,5 @@ export function fetchBreeds(){
 }
 
 export function fetchBreed(breedId : string){
-    return fetch(`${BASE_URL}/images/search?api_key=${API_KEY}?breed_id=${breedId}`).then((response) => response.json());
+    return fetch(`${BASE_URL}/images/search?breed_ids=${breedId}&api_key=${API_KEY}`).then((response) => response.json());
 }

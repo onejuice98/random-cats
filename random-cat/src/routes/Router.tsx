@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cat from "./Cats";
+import Breeds from "./Breeds";
 import Breed from "./Breed";
 
 function Router() {
@@ -7,7 +8,8 @@ function Router() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Cat />} />
-                <Route path="/:breedId/*" element={<Breed />} />
+                <Route path="/breeds" element={<Breeds />} />
+                <Route path="/breeds/:breedId" element={<Breed />} />
             </Routes>
         </BrowserRouter>
     )

@@ -1,31 +1,33 @@
-import { fetchBreed } from "../api";
-import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import { ICat, CatImg } from "./Cats";
+import { useQuery } from "react-query";
+import { fetchBreed } from "../api";
+import { CatImg, Container, Header, ICat } from "./Cats";
 
-function Breed() {
+function Breed(){
     const { breedId } = useParams();
-    const { isLoading : infoLoading, data : infoData, refetch} = useQuery<ICat[]>(
+    const { isLoading : infoLoading, data : infoData, refetch : infoRefetch} = useQuery<ICat[]>(
         ["info", breedId], 
         () => fetchBreed(breedId!), {
             refetchOnMount : false,
             refetchOnWindowFocus : false,
         }
     );
-    const onClick = () => {refetch();}
+    const onClick = () => {infoRefetch();}
     return (
         <div>
             {infoLoading ? "Loading..." : (
+                <Container>
+                    <Header> {breedId} </Header>
                     <div key={infoData![0]?.id}>
                         <CatImg src={infoData![0]?.url}/>
-                        <button onClick={onClick}> Anoter! </button>
+                        <span>width : {infoData![0]?.width}</span>
+                        <span>height : {infoData![0]?.height}</span>
+                        <button onClick={onClick}> Another! </button>
                     </div>
-                )
-            }
-
+                </Container>
+            )}
         </div>
-
-
     );
 }
+
 export default Breed;
