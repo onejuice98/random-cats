@@ -93,20 +93,18 @@ function Cat(){
             {loading ? "Loading..." : (
                 <Container>
                     <Header> Random Cats </Header>
-                    {data?.map((cat) => (
-                        <div key={cat.id}>
-                            <CatImg src={cat.url}/>
-                            <span>width : {cat.width}</span>
-                            <span>height : {cat.height}</span>
-                            <button onClick={onClick}> Another! </button>
-                        </div>
-                    ))}
+                    <div key={data![0]?.id}>
+                        <CatImg src={data![0]?.url}/>
+                        <span>width : {data![0]?.width}</span>
+                        <span>height : {data![0]?.height}</span>
+                        <button onClick={onClick}> Another! </button>
+                    </div>
                     {breedData?.map((breed) => (
-                        <>
+                        <div key={breed.id}>
                             <Link to={`/${breed.id}`}>
                                 <h3> {breed.name} </h3>
                             </Link>
-                        </>
+                        </div>
                     ))}
 
                 </Container>

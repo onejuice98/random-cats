@@ -6,11 +6,9 @@ export function fetchCats(){
 }
 
 export function fetchBreeds(){
-    //console.log(`${BASE_URL}/breeds/?api_key=${API_KEY}`);
     return fetch(`${BASE_URL}/breeds/?api_key=${API_KEY}`).then((response) => response.json());
 }
 
 export function fetchBreed(breedId : string){
-    console.log(`${BASE_URL}/images/search?api_key=${API_KEY}?breed_id=${breedId}`);
     return fetch(`${BASE_URL}/images/search?api_key=${API_KEY}?breed_id=${breedId}`).then((response) => response.json());
 }

@@ -3,13 +3,6 @@ import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { ICat, CatImg } from "./Cats";
 
-interface IBreedCat {
-    breeds : [];
-    id : string;
-    url : string;
-    width : number;
-    height : number;
-}
 function Breed() {
     const { breedId } = useParams();
     const { isLoading : infoLoading, data : infoData, refetch} = useQuery<ICat[]>(
@@ -19,8 +12,6 @@ function Breed() {
             refetchOnWindowFocus : false,
         }
     );
-    const A = infoData;
-    //console.log(infoData[0].id);
     const onClick = () => {refetch();}
     return (
         <div>
